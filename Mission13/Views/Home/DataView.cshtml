@@ -1,0 +1,46 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model List<Bowler>
+
+<div class="text-center">
+    Contacct the Bowlers
+</div>
+
+<div>
+    <form>
+        <select>TeamName</select>
+    </form>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <td>BowlerFirstName</td>
+            <td>BowlerLastName</td>
+            <td>BowlerAddress</td>
+            <td>BowlerCity</td>
+            <td>BowlerState</td>
+            <td>BowlerZip</td>
+            <td>BowlerPhoneNumber</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model)
+        {
+        <tr>
+            <td>@x.BowlerFirstName</td>
+            <td>@x.BowlerLastName</td>
+            <td>@x.BowlerAddress</td>
+            <td>@x.BowlerCity</td>
+            <td>@x.BowlerState</td>
+            <td>@x.BowlerZip</td>
+            <td>@x.BowlerPhoneNumber</td>
+            <td><button class="btn btn-primary">Edit</button></td>
+            <td><button class="btn btn-danger">Delete</button></td>
+        </tr>
+        }
+    </tbody>
+</table>
