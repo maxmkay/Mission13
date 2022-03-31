@@ -6,40 +6,56 @@
 @model List<Bowler>
 
 <div class="text-center">
-    Contacct the Bowlers
+    <h2>@ViewBag.TeamDisplay</h2>
 </div>
-
 <div>
-    <form>
-        <select>TeamName</select>
-    </form>
+    <a class="btn btn-primary" asp-controller="Home" asp-action="DataView">Home</a>
+</div>
+<div>
+    <a class="btn btn-primary" asp-controller="Home" asp-action="AddNewBowler">Add Bowler</a>
+    
+  
+        
+          
+    @foreach (Team x in ViewBag.Teams)
+    {
+        <a  class="btn btn-secondary @(ViewBag.SelectedTeamID == x.TeamID ? "btn-danger" : "btn-secondary")" asp-controller="Home" asp-action="DataView" asp-route-teamid="@x.TeamID">@x.TeamName</a>
+    }
+        
+   
 </div>
 
-<table>
-    <thead>
+<table class="table table-striped">
+    <thead class="thead-dark">
         <tr>
-            <td>BowlerFirstName</td>
-            <td>BowlerLastName</td>
-            <td>BowlerAddress</td>
-            <td>BowlerCity</td>
-            <td>BowlerState</td>
-            <td>BowlerZip</td>
-            <td>BowlerPhoneNumber</td>
+            <td scope="col">BowlerFirstName</td>
+            <td scope="col">BowlerLastName</td>
+            <td scope="col">BowlerAddress</td>
+            <td scope="col">BowlerCity</td>
+            <td scope="col">BowlerState</td>
+            <td scope="col">BowlerZip</td>
+            <td scope="col">BowlerPhoneNumber</td>
+            <td scope="col">TeamName</td>
+            <td scope="col">Edit</td>
+            <td scope="col">Delete</td>
+
+
         </tr>
     </thead>
     <tbody>
         @foreach (var x in Model)
         {
         <tr>
-            <td>@x.BowlerFirstName</td>
+            <td class="row">@x.BowlerFirstName @x.BowlerMiddleInit</td>
             <td>@x.BowlerLastName</td>
             <td>@x.BowlerAddress</td>
             <td>@x.BowlerCity</td>
             <td>@x.BowlerState</td>
             <td>@x.BowlerZip</td>
             <td>@x.BowlerPhoneNumber</td>
-            <td><button class="btn btn-primary">Edit</button></td>
-            <td><button class="btn btn-danger">Delete</button></td>
+            <td>@x.Team.TeamName</td>
+            <td><a class="btn btn-primary" asp-controller="Home" asp-action="Edit" asp-route-bowlerid="@x.BowlerId">Edit</a></td>
+            <td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-bowlerid="@x.BowlerId">Delete</a></td>
         </tr>
         }
     </tbody>
