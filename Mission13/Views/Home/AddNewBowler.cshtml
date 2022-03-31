@@ -1,0 +1,46 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model Mission13.Models.Bowler
+
+<form method="post">
+    <input type="hidden" asp-for="BowlerId" />
+
+    <label>Enter First Name:</label>
+    <input type="text" asp-for="BowlerFirstName" />
+
+    <label>Enter Last Name:</label>
+    <input type="text" asp-for="BowlerLastName" />
+
+    <label>Enter Middle Initial:</label>
+    <input type="text" asp-for="BowlerMiddleInit" />
+
+    <label>Enter Address:</label>
+    <input type="text" asp-for="BowlerAddress" />
+
+    <label>Enter City:</label>
+    <input type="text" asp-for="BowlerCity" />
+
+    <label>Enter Zip:</label>
+    <input type="text" asp-for="BowlerZip" />
+
+    <label>Enter State:</label>
+    <input type="text" asp-for="BowlerState" />
+
+    <label>Enter Phone number:</label>
+    <input type="text" asp-for="BowlerPhoneNumber" />
+
+    <label>Enter Team Name:</label>
+    <select asp-for="TeamID">
+        <option value="">Select a Team</option>
+        @foreach (Team x in ViewBag.Teams)
+        {
+            <option value="@x.TeamID">@x.TeamName</option>
+        }
+    </select>
+
+    <button class="btn btn-primary" type="submit">Submit</button>
+</form>

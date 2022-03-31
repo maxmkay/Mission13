@@ -1,0 +1,15 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model Bowler
+
+<div>Are you sure you want to delete @Model.BowlerFirstName @Model.BowlerLastName</div>
+
+<form method="post" asp-controller="Home" asp-action="Delete">
+    <a asp-controller="Home" asp-action="DataView" class="btn btn-primary">Cancel</a>
+    <button type="submit" class="btn-outline-primary">Delete</button>
+    <input type="hidden" asp-for="BowlerId" />
+</form>
